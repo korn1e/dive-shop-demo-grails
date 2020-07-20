@@ -21,7 +21,6 @@ class DiveShopController {
 
     def create() {
 
-        log.debug("")
         def operationalDays = []
         diveShopUtil.dayLabelMap.eachWithIndex{ key, val, index ->
             operationalDays.add(
@@ -42,7 +41,7 @@ class DiveShopController {
                         langIso: 'en',
                         name: 'Dive Shop X',
                         address1: 'Jalan Mekar Saluyu 13C',
-                        address2: 'Kecamatan Setia Budi, Menteng Atas, RW1/RT14',
+                        address2: 'Kecamatan Setia Budi, RW1/RT14',
                         address3: 'Jakarta, Indonesia',
                         email: 'info@xdiveshop.com',
                         website: 'http://www.xdiveshop.com',
@@ -63,7 +62,7 @@ class DiveShopController {
     }
 
     def save(DiveShopCommand diveShopCommand) {
-        System.out.println("controller save: " + diveShopCommand.name + " language: "+diveShopCommand.langIso)
+        println "controller save: " + diveShopCommand.name + " language: "+diveShopCommand.langIso
 
         def diveShop = diveShopService.registerDiveShop(diveShopCommand)
 

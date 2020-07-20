@@ -16,26 +16,23 @@ class DiveShopUtil {
     def dayLabelMap = [:]
     def languages = []
 
-    //DiveShopCommand diveShopCommand
-    //Log log
-
 
     Map getDayLabelMap(){
-        if(dayLabelMap || dayLabelMap.isEmpty()){
+        if(!dayLabelMap || dayLabelMap.isEmpty()){
             populateReferenceData()
         }
         dayLabelMap
     }
 
     List getLanguages(){
-        if(languages || languages.isEmpty()){
+        if(!languages || languages.isEmpty()){
             populateReferenceData()
         }
         languages
     }
 
     DiveShop mapDiveShopBasicData(DiveShopCommand diveShopCommand){
-        System.out.println("diveShopCommand.id: " + diveShopCommand.id)
+        println "diveShopCommand.id: " + diveShopCommand.id
         def diveShop = diveShopService.get(diveShopCommand.id == null ? 0: diveShopCommand.id)
 
         def map = [:]
@@ -88,14 +85,14 @@ class DiveShopUtil {
 
 
     def populateReferenceData(){
-        log.debug("populateReferenceData...")
-        if(languages || languages.isEmpty()){
+        println "populateReferenceData..."
+        if(!languages || languages.isEmpty()){
             languages.add(new Language(lang: 'Bahasa', langIso: 'id'))
             languages.add(new Language(lang: 'English', langIso: 'en'))
             languages.add(new Language(lang: 'French', langIso: 'fr'))
             languages.add(new Language(lang: 'Spanish', langIso: 'es'))
         }
-        if(dayLabelMap || dayLabelMap.isEmpty()){
+        if(!dayLabelMap || dayLabelMap.isEmpty()){
             dayLabelMap.put(0, 'Monday')
             dayLabelMap.put(1, 'Tuesday')
             dayLabelMap.put(2, 'Wednesday')

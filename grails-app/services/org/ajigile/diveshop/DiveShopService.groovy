@@ -27,7 +27,7 @@ class DiveShopService {
     }
 
     def save(entity, insert){
-        System.out.println('DiveShopService save: ' + entity)
+        println 'DiveShopService save: ' + entity
         if(insert){
             entity.save(insert: true)
         } else {
@@ -100,12 +100,11 @@ class DiveShopService {
                     diveShop: diveShop
             )
             diveShop.addToOperationalDays(operationalDay)
-            //diveShopService.save(operationalDay)
-            //System.out.println("operationalDay saved with id: " + operationalDay.id)
+
         }
 
         save(diveShop, true)
-        System.out.println("diveShop saved as id: " + diveShop.id)
+        println "diveShop saved as id: " + diveShop.id
 
         applyFeatures(diveShopCommand, diveShop)
         applyCourses(diveShopCommand, diveShop)
@@ -128,7 +127,7 @@ class DiveShopService {
         }
 
         save(diveShop)
-        System.out.println("diveShop saved as id: " + diveShop.id)
+        println "diveShop saved as id: " + diveShop.id
 
         applyFeatures(diveShopCommand, diveShop)
         applyCourses(diveShopCommand, diveShop)
@@ -143,11 +142,11 @@ class DiveShopService {
             // currently new features
             if(diveShopCommand.features?.trim()){
                 diveShopCommand.features.split(',').each { name ->
-                    System.out.println("feature name: " + name)
+                    println "feature name: " + name
                     def feature = new Feature(label: name, diveShop: diveShop)
 
                     save(feature)
-                    System.out.println("feature saved with id: " + feature.id)
+                    println "feature saved with id: " + feature.id
                 }
             }
         } else {
@@ -198,11 +197,11 @@ class DiveShopService {
             // currently new courses
             if(diveShopCommand.courses?.trim()){
                 diveShopCommand.courses.split(',').each { name ->
-                    System.out.println("courses name: " + name)
+                    println "courses name: " + name
                     def courses = new Course(label: name, diveShop: diveShop)
 
                     save(courses)
-                    System.out.println("courses saved with id: " + courses.id)
+                    println "courses saved with id: " + courses.id
                 }
             }
         } else {

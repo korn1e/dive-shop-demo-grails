@@ -1,7 +1,7 @@
 # Dive Shop Demo on Grails
 
 ## Before run this application
-You need to have following ready
+You need to have following ready:
 
 #### Grails runtime
 I use (old) Grails 3.3.3
